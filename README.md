@@ -25,3 +25,42 @@
 - https://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/
 - https://winterbe.com/posts/2015/03/25/java8-examples-string-number-math-files/
 
+### Java (Multi Threding, Ser and Desrz, GC)
+> TBA
+
+
+### Spring 
+- Boot 
+- Auto Config
+- Component Scanning
+- Actuator
+- Extern Config
+- Spring Boot config entries
+- Spring Security
+- API Security
+- OAuth
+- JWT
+- Spring DATA JPA, Hibernate
+- Spring MVC
+- Rest API Impl
+- Dispatcher Servlet
+- Open API Spec
+
+### Micro Services
+
+### Docker
+
+### Git
+
+### Markdown
+- https://markdownlivepreview.com/
+
+### Design Patterns
+
+### Jenkins
+
+### Rabbit MQ
+
+### Kafka
+
+
