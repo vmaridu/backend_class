@@ -45,6 +45,7 @@
 - Rest API Impl
 - Dispatcher Servlet
 - Open API Spec
+- Consuming RestClient
 
 ### Micro Services
 
