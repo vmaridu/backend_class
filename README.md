@@ -49,6 +49,7 @@
 ### Micro Services
 
 ### Rest API
+ - Google interview questions and read
  - https://www.youtube.com/watch?v=5WXYw4J4QOU
  - https://adidas.gitbook.io/api-guidelines/rest-api-guidelines/protocol
  - https://adidas.gitbook.io/api-guidelines/rest-api-guidelines/message
