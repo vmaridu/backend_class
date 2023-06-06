@@ -47,6 +47,7 @@
 - Open API Spec
 - Consuming RestClient
 - Testing
+- Error Handling
 
 ### Micro Services
 
