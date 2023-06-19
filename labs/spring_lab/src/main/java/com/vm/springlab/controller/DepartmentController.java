@@ -1,7 +1,7 @@
-package com.vm.spring_lab.controller;
+package com.vm.springlab.controller;
 
-import com.vm.spring_lab.entity.Department;
-import com.vm.spring_lab.service.DepartmentService;
+import com.vm.springlab.entity.Department;
+import com.vm.springlab.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

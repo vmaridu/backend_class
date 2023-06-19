@@ -1,4 +1,4 @@
-package com.vm.spring_lab;
+package com.vm.springlab;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

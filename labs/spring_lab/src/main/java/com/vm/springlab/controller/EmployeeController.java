@@ -1,7 +1,7 @@
-package com.vm.spring_lab.controller;
+package com.vm.springlab.controller;
 
-import com.vm.spring_lab.entity.Employee;
-import com.vm.spring_lab.service.EmployeeService;
+import com.vm.springlab.entity.Employee;
+import com.vm.springlab.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

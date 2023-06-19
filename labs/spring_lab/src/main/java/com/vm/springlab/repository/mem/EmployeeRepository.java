@@ -1,7 +1,6 @@
-package com.vm.spring_lab.repository.mem;
+package com.vm.springlab.repository.mem;
 
-import com.vm.spring_lab.entity.Department;
-import com.vm.spring_lab.entity.Employee;
+import com.vm.springlab.entity.Employee;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;

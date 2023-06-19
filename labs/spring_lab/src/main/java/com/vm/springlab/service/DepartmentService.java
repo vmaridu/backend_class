@@ -1,7 +1,7 @@
-package com.vm.spring_lab.service;
+package com.vm.springlab.service;
 
-import com.vm.spring_lab.entity.Department;
-import com.vm.spring_lab.repository.mem.DepartmentRepository;
+import com.vm.springlab.entity.Department;
+import com.vm.springlab.repository.mem.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
