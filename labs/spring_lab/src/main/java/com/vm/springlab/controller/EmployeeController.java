@@ -1,8 +1,10 @@
 package com.vm.springlab.controller;
 
+import com.vm.springlab.config.ApplicationProperties;
 import com.vm.springlab.entity.Employee;
 import com.vm.springlab.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,11 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
+
+
+    // TODO : Understand below
+    // ApplicationProperties applicationProperties,
+    // @Value("${custom.key}") String customKey)
 
     @Autowired
     public EmployeeController(EmployeeService employeeService) {
