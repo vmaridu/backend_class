@@ -10,11 +10,11 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Repository
-public class DepartmentRepository {
+public class DepartmentMemRepository {
 
     private final Map<String, Department> departments;
 
-    public DepartmentRepository() {
+    public DepartmentMemRepository() {
         departments = new LinkedHashMap<>();
         var hrDept = new Department(UUID.randomUUID().toString(), "HR", "Baby Maridu");
         var itDept = new Department(UUID.randomUUID().toString(), "IT", "Teja Maridu");

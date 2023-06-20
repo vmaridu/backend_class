@@ -1,0 +1,17 @@
+version: '3.4'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    # network_mode: host
+    ports: 
+      - 3306:3306
+    volumes:
+      - /Users/vmaridu/stuff/installation/mysql:/var/lib/mysql
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD= "root"
+      - MYSQL_DATABASE= "lab"
+      - MYSQL_USER= "lab"
+      - MYSQL_PASSWORD= "lab"
