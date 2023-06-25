@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 
 public class MethodReferenceDemo {
     public static void main(String[] args) {
+        System.out.println("---------------------Start---------------------");
         // 01. Method reference for Static method
         // Example 1
         DataUtil.nums.stream()
@@ -71,7 +72,7 @@ public class MethodReferenceDemo {
         System.out.println(bikeBrands.stream()
                 .map(Bike::new)
                 .collect(Collectors.toList()));
-        System.out.println("---------End----------");
+        System.out.println("---------------------End---------------------");
     }
 }
 
