@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 public class LambdaExpressionDemo {
 
     public static void main(String[] args) {
-        System.out.println("---------------------Start---------------------");
 //        List<String> names = new ArrayList<String>(Arrays.asList("Teja", "Baby", "Sudhu", "Bala"));
 //        // Immutable Map
 //        Map<Integer, String> namesMap = Map.of(1, "Teja M", 2, "Baby M", 3, "Sudhu M", 4, "Bala M");
@@ -49,7 +48,6 @@ public class LambdaExpressionDemo {
             System.out.println("Name is " + s);
         };
         DataUtil.names.forEach(method);
-        System.out.println("---------------------End---------------------");
     }
 
     public static void drawShape(Shape shape) {
