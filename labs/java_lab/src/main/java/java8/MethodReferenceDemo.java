@@ -71,6 +71,7 @@ public class MethodReferenceDemo {
         System.out.println(bikeBrands.stream()
                 .map(Bike::new)
                 .collect(Collectors.toList()));
+        System.out.println("---------End----------");
     }
 }
 

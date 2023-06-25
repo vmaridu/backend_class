@@ -48,8 +48,10 @@ public class LambdaExpressionDemo {
             System.out.println("Name is " + s);
         };
         DataUtil.names.forEach(method);
+
     }
 
+    // Draw shape method
     public static void drawShape(Shape shape) {
         shape.draw(55, 2);
     }
