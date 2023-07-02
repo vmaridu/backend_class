@@ -1,0 +1,23 @@
+# Base image
+FROM alpine
+
+# Set environment variables
+ENV MYSQL_DATABASE=vm_db \
+    MYSQL_USER=vm_root \
+    MYSQL_PASSWORD=hello@8383 \
+    MYSQL_ROOT_PASSWORD=hello@8383
+
+# Install MySQL and other dependencies
+RUN apk add --no-cache mysql mysql-client
+
+# Create the MySQL data directory
+RUN mkdir -p /var/lib/mysql /run/mysqld
+
+# Set permissions for the MySQL data directory
+RUN chown -R mysql:mysql /var/lib/mysql /run/mysqld
+
+# Initialize the MySQL database
+RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql
+
+# Start the MySQL server
+CMD ["mysqld", "--user=mysql", "--datadir=/var/lib/mysql", "--port=3306"]
