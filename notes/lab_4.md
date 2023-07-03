@@ -12,8 +12,8 @@
  - Auto Config 
  - Spring Data JPA
  - Rest Template Client
- - logging 
- - OAS and Swagger 
+ - Logging 
+ - OAS and Swagger
  - Custom Queries 
- - Spring Data JPA
+ - Project Management and Agile 
  

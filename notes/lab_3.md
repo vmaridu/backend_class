@@ -75,7 +75,14 @@ CREATE TABLE `lab`.`department` (
   PRIMARY KEY (`uuid`));
 ~~~
 
-
+### Maven 
+~~~
+// scopes
+ - compile 
+ - test
+ - provided 
+ - system 
+~~~
 
 ### Read 
  - Linux Directories explained : https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/
@@ -84,4 +91,8 @@ CREATE TABLE `lab`.`department` (
  - Docker https://github.com/vmaridu/notes/blob/master/cloud/docker/01-docker-commands.md
  - Docker File https://github.com/vmaridu/notes/blob/master/cloud/docker/03-docker-file.md
  - API Error handling https://www.baeldung.com/exception-handling-for-rest-with-spring
-
+ - Spring JDBC https://www.tutorialspoint.com/springjdbc/springjdbc_update_query.htm
+ - Spring JDBC https://medium.com/beingcoders/java-concepts-jdbctemplate-querying-spring-3192bed61f44
+ - Read API, Spring Data Pagination : https://www.baeldung.com/spring-data-jpa-pagination-sorting
+ - OpenAPI Spec https://www.youtube.com/watch?v=InE6Odx--xo
+ - OpenAPI Spec https://spec.openapis.org/oas/v3.1.0

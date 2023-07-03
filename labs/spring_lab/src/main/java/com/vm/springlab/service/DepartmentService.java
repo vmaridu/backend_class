@@ -1,6 +1,7 @@
 package com.vm.springlab.service;
 
 import com.vm.springlab.entity.Department;
+import com.vm.springlab.repository.jdbc.DepartmentJDBCCustomRepository;
 import com.vm.springlab.repository.mem.DepartmentMemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,10 @@ import java.util.List;
 @Service
 public class DepartmentService {
 
-    private final DepartmentMemRepository deptRepository;
+    private final DepartmentJDBCCustomRepository deptRepository;
 
     @Autowired
-    public DepartmentService(DepartmentMemRepository deptRepository) {
+    public DepartmentService(DepartmentJDBCCustomRepository deptRepository) {
         this.deptRepository = deptRepository;
     }
 
