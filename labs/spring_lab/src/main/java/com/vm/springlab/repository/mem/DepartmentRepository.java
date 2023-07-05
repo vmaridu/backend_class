@@ -28,6 +28,7 @@ public class DepartmentRepository {
     }
 
     public List<Department> getDepartments() {
+
         return departments.values().stream().collect(Collectors.toList());
     }
 

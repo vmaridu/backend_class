@@ -1,5 +1,7 @@
 package com.vm.springlab.controller;
 
+import com.vm.springlab.config.ApplicationProperties;
+import com.vm.springlab.dto.EmployeeDeptDTO;
 import com.vm.springlab.entity.Employee;
 import com.vm.springlab.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +16,20 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService,
+                              ApplicationProperties appProps) {
+        System.out.println(appProps.getEmployeeMsg());
         this.employeeService = employeeService;
     }
 
     @GetMapping(path = "/api/v1/employees", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Employee> getEmployees() {
         return employeeService.getEmployees();
+    }
+
+    @GetMapping(path = "/api/v1/departments/{deptUuid}/employees", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<EmployeeDeptDTO> getEmployeesByDepartment(@PathVariable String deptUuid) {
+        return employeeService.getEmployeesByDepartment(deptUuid);
     }
 
     @GetMapping(path = "/api/v1/employees/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,9 +48,10 @@ public class EmployeeController {
     }
 
     @DeleteMapping(path = "/api/v1/employees/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Employee deleteEmployee(@PathVariable String uuid) {
+    public String deleteEmployee(@PathVariable String uuid) {
         return employeeService.deleteEmployee(uuid);
     }
+
 
     // TODO: Write a Service for Verifying the employee
     // TODO: Write a Service for getting age, date of join information of employee

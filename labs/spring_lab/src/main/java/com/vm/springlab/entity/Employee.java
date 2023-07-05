@@ -1,21 +1,58 @@
 package com.vm.springlab.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.relational.core.mapping.Table;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employee {
+@Table("employee")
+public class Employee implements Persistable {
+
+    @Id
     private String uuid;
-    private String first_name;
-    private String last_name;
-    private String manager;
-    private Double salary;
-    private Date date_of_birth;
-    private Date joined_date_time;
-    private String department_uuid;
+
+    @JsonIgnore
+    @Transient
+    private Boolean isNew;
+
+    @JsonProperty("first_name")
+    private String firstName;
+
+    @JsonProperty("last_name")
+    private String lastName;
+    private BigDecimal salary;
+
+    @JsonProperty("date_of_birth")
+    private LocalDate dateOfBirth;
+
+    @JsonProperty("joined_date_time")
+    private LocalDateTime joinedDateTime;
+
+    @JsonProperty("department_uuid")
+    private String departmentUuid;
+
+    @JsonProperty("manager_uuid")
+    private String managerUuid;
+
+    @Override
+    public Object getId() {
+        return uuid;
+    }
+
+    @Override
+    public boolean isNew() {
+        return isNew;
+    }
 }

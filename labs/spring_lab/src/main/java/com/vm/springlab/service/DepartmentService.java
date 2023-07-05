@@ -1,39 +1,67 @@
 package com.vm.springlab.service;
 
 import com.vm.springlab.entity.Department;
+import com.vm.springlab.exception.BadRequestException;
+import com.vm.springlab.exception.ResourceExistsException;
+import com.vm.springlab.exception.ResourceNotFoundException;
+import com.vm.springlab.repository.jdbc.DepartmentJDBCRepository;
 import com.vm.springlab.repository.mem.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
+
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 @Service
 public class DepartmentService {
 
-    private final DepartmentRepository deptRepository;
+    private final DepartmentJDBCRepository deptRepository;
 
     @Autowired
-    public DepartmentService(DepartmentRepository deptRepository) {
+    public DepartmentService(DepartmentJDBCRepository deptRepository) {
         this.deptRepository = deptRepository;
     }
 
     public List<Department> getDepartments() {
-        return deptRepository.getDepartments();
+        return (List<Department>) deptRepository.findAll();
     }
 
     public Department getDepartment(String uuid) {
-        return deptRepository.getDepartment(uuid);
+        return deptRepository.findById(uuid).orElse(null);
     }
 
     public Department createDepartment(Department dept) {
-        return deptRepository.createDepartment(dept);
+        var empUuid = dept.getUuid();
+        if(isEmpty(empUuid)){
+            throw new BadRequestException("400000", "Department Id cannot be empty");
+        }
+        if(deptRepository.existsById(empUuid)){
+            throw new ResourceExistsException("409000", "Department exists with same Id");
+        }
+        return deptRepository.save(dept);
     }
 
     public Department editDepartment(String uuid, Department dept) {
-        return deptRepository.editDepartment(uuid, dept);
+        if(isEmpty(uuid)){
+            throw new BadRequestException("400000", "Department Id cannot be empty");
+        }
+        if(!deptRepository.existsById(uuid)){
+            throw new ResourceNotFoundException("404000", "Department not found with Id");
+        }
+        dept.setUuid(uuid);
+        return deptRepository.save(dept);
     }
 
-    public Department deleteDepartment(String uuid) {
-        return deptRepository.deleteDepartment(uuid);
+    public String deleteDepartment(String uuid) {
+        if(isEmpty(uuid)) {
+            throw new BadRequestException("400000", "Department Id cannot be empty");
+        }
+        if(!deptRepository.existsById(uuid)) {
+            throw new ResourceNotFoundException("404000", "Department not found with Id");
+        }
+        deptRepository.deleteById(uuid);
+        return uuid;
     }
 }

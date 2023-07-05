@@ -39,7 +39,7 @@ public class DepartmentController {
     }
 
     @DeleteMapping(path = "/api/v1/departments/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Department deleteDepartmentByUuid(@PathVariable String uuid) {
+    public String deleteDepartmentByUuid(@PathVariable String uuid) {
         return departmentService.deleteDepartment(uuid);
     }
 }
