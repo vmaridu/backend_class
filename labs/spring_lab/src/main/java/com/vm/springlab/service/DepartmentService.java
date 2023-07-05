@@ -40,6 +40,7 @@ public class DepartmentService {
         if(deptRepository.existsById(empUuid)){
             throw new ResourceExistsException("409000", "Department exists with same Id");
         }
+        dept.setIsNew(Boolean.TRUE);
         return deptRepository.save(dept);
     }
 
@@ -50,6 +51,7 @@ public class DepartmentService {
         if(!deptRepository.existsById(uuid)){
             throw new ResourceNotFoundException("404000", "Department not found with Id");
         }
+        dept.setIsNew(Boolean.FALSE);
         dept.setUuid(uuid);
         return deptRepository.save(dept);
     }
