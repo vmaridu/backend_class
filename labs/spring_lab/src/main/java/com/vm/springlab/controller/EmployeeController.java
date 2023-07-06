@@ -24,7 +24,8 @@ public class EmployeeController {
 
     @GetMapping(path = "/api/v1/employees", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Employee> getEmployees() {
-        return employeeService.getEmployees();
+        List<Employee> lst = employeeService.getEmployees();
+        return lst;
     }
 
     @GetMapping(path = "/api/v1/departments/{deptUuid}/employees", produces = MediaType.APPLICATION_JSON_VALUE)

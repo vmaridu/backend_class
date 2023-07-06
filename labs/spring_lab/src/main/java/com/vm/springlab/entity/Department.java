@@ -30,11 +30,13 @@ public class Department implements Persistable {
     private String headUuid;
 
     @Override
+    @JsonIgnore
     public Object getId() {
         return uuid;
     }
 
     @Override
+    @JsonIgnore
     public boolean isNew() {
         return isNew;
     }

@@ -23,8 +23,8 @@ public class Employee implements Persistable {
     @Id
     private String uuid;
 
-    @JsonIgnore
     @Transient
+    @JsonIgnore
     private Boolean isNew;
 
     @JsonProperty("first_name")
@@ -47,11 +47,13 @@ public class Employee implements Persistable {
     private String managerUuid;
 
     @Override
+    @JsonIgnore
     public Object getId() {
         return uuid;
     }
 
     @Override
+    @JsonIgnore
     public boolean isNew() {
         return isNew;
     }
