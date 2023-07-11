@@ -12,7 +12,6 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Data
 @AllArgsConstructor
@@ -45,6 +44,9 @@ public class Employee implements Persistable {
 
     @JsonProperty("manager_uuid")
     private String managerUuid;
+
+    @JsonProperty("verified")
+    private Boolean verified;
 
     @Override
     @JsonIgnore

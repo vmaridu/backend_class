@@ -54,6 +54,11 @@ public class EmployeeController {
     }
 
 
+    @PutMapping(path = "/api/v1/employees/{uuid}/verify", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Boolean verifyEmployee(@PathVariable String uuid) {
+        return employeeService.verifiedEmployee(uuid);
+    }
+
     // TODO: Write a Service for Verifying the employee
     // TODO: Write a Service for getting age, date of join information of employee
     // TODO: Naming conventions of different types of services, not CRED

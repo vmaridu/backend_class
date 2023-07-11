@@ -32,14 +32,9 @@ public class EmployeeService {
     }
 
     public List<EmployeeDeptDTO> getEmployeesByDepartment(String deptUuid) {
-
-        List<EmployeeDeptDTO> objs = employeeRepository.findEmployeeDepartmentNames();
-        objs.forEach(data -> log.info(data.toString()));
-
-        // Finding all employees with department uuid
-        // List<Object> objs = employeeRepository.findAllWithDepartment(deptUuid);
-        // objs.forEach(data -> log.info(data.toString()));
-        return objs;
+        List<EmployeeDeptDTO> empDeptDto = employeeRepository.findEmployeeDepartmentNames(deptUuid);
+        empDeptDto.forEach(data -> log.info(data.toString()));
+        return empDeptDto;
     }
 
     public Employee getEmployee(String uuid) {
@@ -80,5 +75,10 @@ public class EmployeeService {
         }
         employeeRepository.deleteById(uuid);
         return uuid;
+    }
+
+    public Boolean verifiedEmployee(String empUuid) {
+        employeeRepository.changeEmployeeVerifiedStatus(empUuid, Boolean.TRUE);
+        return Boolean.TRUE;
     }
 }
