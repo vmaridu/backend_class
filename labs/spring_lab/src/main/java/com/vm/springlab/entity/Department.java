@@ -13,8 +13,14 @@ import org.springframework.data.relational.core.mapping.Table;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table("department")
+@Table("DEPARTMENT")
 public class Department extends Entity {
+
+    public Department(String uuid, String name, String headUuid) {
+        super(uuid, null);
+        this.name = name;
+        this.headUuid = headUuid;
+    }
 
     @JsonProperty("name")
     private String name;

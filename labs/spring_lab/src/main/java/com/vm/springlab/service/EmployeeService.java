@@ -66,7 +66,7 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    public String deleteEmployee(String uuid) {
+    public void deleteEmployee(String uuid) {
         if (isEmpty(uuid)) {
             throw new BadRequestException("400000", "Employee Id cannot be empty");
         }
@@ -74,7 +74,6 @@ public class EmployeeService {
             throw new ResourceNotFoundException("404000", "Employee not found with Id");
         }
         employeeRepository.deleteById(uuid);
-        return uuid;
     }
 
     public Boolean verifiedEmployee(String empUuid) {

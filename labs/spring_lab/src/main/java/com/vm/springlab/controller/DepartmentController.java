@@ -3,6 +3,7 @@ package com.vm.springlab.controller;
 import com.vm.springlab.entity.Department;
 import com.vm.springlab.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,26 +20,31 @@ public class DepartmentController {
     }
 
     @GetMapping(path = "/api/v1/departments", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public List<Department> getDepartments() {
         return departmentService.getDepartments();
     }
 
     @GetMapping(path = "/api/v1/departments/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public Department getDepartmentByUuid(@PathVariable String uuid) {
         return departmentService.getDepartment(uuid);
     }
 
     @PutMapping(path = "/api/v1/departments/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public Department editDepartment(@PathVariable String uuid, @RequestBody Department department) {
         return departmentService.editDepartment(uuid, department);
     }
 
     @PostMapping(path = "/api/v1/departments", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public Department createDepartment(@RequestBody Department department) {
         return departmentService.createDepartment(department);
     }
 
     @DeleteMapping(path = "/api/v1/departments/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteDepartmentByUuid(@PathVariable String uuid) {
         return departmentService.deleteDepartment(uuid);
     }

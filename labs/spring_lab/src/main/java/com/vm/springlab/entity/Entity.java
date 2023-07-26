@@ -1,13 +1,17 @@
 package com.vm.springlab.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.domain.Persistable;
 
 @Data
-public abstract class Entity  implements Persistable {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Entity implements Persistable{
 
     @Id
     private String uuid;
@@ -15,7 +19,6 @@ public abstract class Entity  implements Persistable {
     @Transient
     @JsonIgnore
     private Boolean isNew;
-
 
     @Override
     @JsonIgnore

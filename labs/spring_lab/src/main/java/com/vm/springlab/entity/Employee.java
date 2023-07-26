@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table("employee")
+@Table("EMPLOYEE")
 public class Employee extends Entity {
 
     @JsonProperty("first_name")
@@ -35,7 +35,10 @@ public class Employee extends Entity {
     @JsonProperty("manager_uuid")
     private String managerUuid;
 
-    @JsonProperty("verified")
+    /*
+        @JsonProperty("verified")
     private Boolean verified;
+     */
+
 
 }

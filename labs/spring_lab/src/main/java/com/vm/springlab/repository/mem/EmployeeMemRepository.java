@@ -3,19 +3,18 @@ package com.vm.springlab.repository.mem;
 import com.vm.springlab.entity.Employee;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Repository
-public class EmployeeRepository {
+public class EmployeeMemRepository {
 
     private final Map<String, Employee> employees;
 
-    public EmployeeRepository() {
+    public EmployeeMemRepository() {
         employees = new LinkedHashMap<>();
         // uuid, first_ame, last_name, manager, salary, date_of_birth, joined_date_time, department_uuid
 //        var emp1 = new Employee(UUID.randomUUID().toString(), true, "Usha", "Bandham",
