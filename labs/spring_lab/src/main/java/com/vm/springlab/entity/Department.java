@@ -14,30 +14,11 @@ import org.springframework.data.relational.core.mapping.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table("department")
-public class Department implements Persistable {
-    @Id
-    @JsonProperty("uuid")
-    private String uuid;
-
-    @JsonIgnore
-    @Transient
-    private Boolean isNew;
+public class Department extends Entity {
 
     @JsonProperty("name")
     private String name;
 
     @JsonProperty("head")
     private String headUuid;
-
-    @Override
-    @JsonIgnore
-    public Object getId() {
-        return uuid;
-    }
-
-    @Override
-    @JsonIgnore
-    public boolean isNew() {
-        return isNew;
-    }
 }
