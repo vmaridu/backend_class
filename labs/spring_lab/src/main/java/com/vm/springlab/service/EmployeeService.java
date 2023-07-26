@@ -1,20 +1,23 @@
 package com.vm.springlab.service;
 
+import com.vm.springlab.dto.EmployeeDeptDTO;
 import com.vm.springlab.entity.Employee;
 import com.vm.springlab.exception.BadRequestException;
 import com.vm.springlab.exception.ResourceExistsException;
+import com.vm.springlab.exception.ResourceNotFoundException;
 import com.vm.springlab.repository.jdbc.EmployeeJDBCRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-import static org.springframework.util.ObjectUtils.isEmpty;
+import static org.apache.commons.lang3.StringUtils.*;
+
 
 @Service
-@Transactional
+@Slf4j
 public class EmployeeService {
 
     private final EmployeeJDBCRepository employeeRepository;
@@ -25,11 +28,13 @@ public class EmployeeService {
     }
 
     public List<Employee> getEmployees() {
-        var result = new ArrayList<Employee>();
-        for (Employee employee:employeeRepository.findAll()) {
-            result.add(employee);
-        }
-        return result;
+        return (List<Employee>) employeeRepository.findAll();
+    }
+
+    public List<EmployeeDeptDTO> getEmployeesByDepartment(String deptUuid) {
+        List<EmployeeDeptDTO> empDeptDto = employeeRepository.findEmployeeDepartmentNames(deptUuid);
+        empDeptDto.forEach(data -> log.info(data.toString()));
+        return empDeptDto;
     }
 
     public Employee getEmployee(String uuid) {
@@ -37,35 +42,42 @@ public class EmployeeService {
     }
 
     public Employee createEmployee(Employee employee) {
-        var empUuid = employee.getUuid();
-
-        if(isEmpty(empUuid)){
-            throw new BadRequestException("400000", "emp id is empty");
+        employee.setUuid(UUID.randomUUID().toString());
+        /** No need to check
+         if(isEmpty(employee.getUuid())){
+         throw new BadRequestException("400000", "Employee Id cannot be empty");
+         } **/
+        if (employeeRepository.existsById(employee.getUuid())) {
+            throw new ResourceExistsException("409000", "Employee exists with same Id");
         }
-
-       if(employeeRepository.existsById(empUuid)){
-           throw new ResourceExistsException("409000", "emp id is present");
-       }
-
-       return employeeRepository.save(employee);
-    }
-
-    public Employee editEmployee(String uuid, Employee employee) {
+        employee.setIsNew(Boolean.TRUE);
         return employeeRepository.save(employee);
     }
 
-    public Employee deleteEmployee(String uuid) {
-
-        if(isEmpty(uuid)){
-            throw new BadRequestException("400000", "emp id is empty");
+    public Employee editEmployee(String uuid, Employee employee) {
+        if (isEmpty(uuid)) {
+            throw new BadRequestException("400000", "Employee Id cannot be empty");
         }
-
-        if(employeeRepository.existsById(uuid)){
-            throw new ResourceExistsException("409000", "emp id is present");
+        if (!employeeRepository.existsById(uuid)) {
+            throw new ResourceNotFoundException("404000", "Employee not found with Id");
         }
-
-        employeeRepository.deleteById(uuid);
-        return null;
+        employee.setIsNew(Boolean.FALSE);
+        employee.setUuid(uuid);
+        return employeeRepository.save(employee);
     }
 
+    public void deleteEmployee(String uuid) {
+        if (isEmpty(uuid)) {
+            throw new BadRequestException("400000", "Employee Id cannot be empty");
+        }
+        if (!employeeRepository.existsById(uuid)) {
+            throw new ResourceNotFoundException("404000", "Employee not found with Id");
+        }
+        employeeRepository.deleteById(uuid);
+    }
+
+    public Boolean verifiedEmployee(String empUuid) {
+        employeeRepository.changeEmployeeVerifiedStatus(empUuid, Boolean.TRUE);
+        return Boolean.TRUE;
+    }
 }

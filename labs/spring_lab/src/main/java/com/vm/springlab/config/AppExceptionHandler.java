@@ -1,6 +1,7 @@
 package com.vm.springlab.config;
 
 import com.vm.springlab.dto.ErrorMessage;
+import com.vm.springlab.exception.BadRequestException;
 import com.vm.springlab.exception.ResourceExistsException;
 import com.vm.springlab.exception.ResourceNotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,7 @@ public class AppExceptionHandler {
         return new ErrorMessage("400000", e.getMessage());
     }
 
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)
     @ResponseBody
@@ -44,12 +46,17 @@ public class AppExceptionHandler {
     }
 
     @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorMessage handleBadRequestException(BadRequestException e) {
+        return new ErrorMessage("40058000", e.getMessage());
+    }
+
+    @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public ErrorMessage handleException(Exception e) {
         log.error("Unknown Error", e);
         return new ErrorMessage("500000", e.getMessage());
     }
-
-
 }

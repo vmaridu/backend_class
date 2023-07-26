@@ -16,14 +16,15 @@ public class DepartmentMemRepository {
 
     public DepartmentMemRepository() {
         departments = new LinkedHashMap<>();
-        var hrDept = new Department(UUID.randomUUID().toString(), "HR", "Baby Maridu");
-        var itDept = new Department(UUID.randomUUID().toString(), "IT", "Teja Maridu");
-        var rdDept = new Department(UUID.randomUUID().toString(), "R&D", "Sudhu Maridu");
-        var accountsDept = new Department(UUID.randomUUID().toString(), "Accounts", "Sai Maridu");
-        departments.put(hrDept.getUuid(), hrDept);
-        departments.put(itDept.getUuid(), itDept);
-        departments.put(rdDept.getUuid(), rdDept);
-        departments.put(accountsDept.getUuid(), accountsDept);
+//        var hrDept = new Department(UUID.randomUUID().toString(), true, "HR", "Baby Maridu");
+//        var itDept = new Department(UUID.randomUUID().toString(), true, "IT", "Teja Maridu");
+//        var rdDept = new Department(UUID.randomUUID().toString(), true, "R&D", "Sudhu Maridu");
+//        var accountsDept = new Department(UUID.randomUUID().toString(), true, "Accounts",
+//                "Sai Maridu");
+//        departments.put(hrDept.getUuid(), hrDept);
+//        departments.put(itDept.getUuid(), itDept);
+//        departments.put(rdDept.getUuid(), rdDept);
+//        departments.put(accountsDept.getUuid(), accountsDept);
     }
 
     public List<Department> getDepartments() {

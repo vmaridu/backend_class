@@ -73,7 +73,7 @@ public class DepartmentJDBCCustomRepository {
         dept.setUuid(UUID.randomUUID().toString());
         parameters.put("uuid", dept.getUuid());
         parameters.put("name", dept.getName());
-        parameters.put("head_uuid", dept.getHead());
+        parameters.put("head_uuid", dept.getHeadUuid());
         jdbcInsert.execute(parameters);
         return dept;
         //jdbcTemplate.update(INSERT_DEPT_QUERY, dept.getUuid(), dept.getName(), dept.getHead());
@@ -94,7 +94,7 @@ public class DepartmentJDBCCustomRepository {
     public Department editDepartment(String uuid, Department dept) {
         if(exists(uuid)){
             dept.setUuid(uuid);
-            jdbcTemplate.update(UPDATE_DEPT_QUERY, dept.getName(), dept.getHead(), dept.getUuid());
+            jdbcTemplate.update(UPDATE_DEPT_QUERY, dept.getName(), dept.getHeadUuid(), dept.getUuid());
             return dept;
         }else {
             throw new ResourceNotFoundException("404000", "uuid('%s') not found".formatted(uuid));

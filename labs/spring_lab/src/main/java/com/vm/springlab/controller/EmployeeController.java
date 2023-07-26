@@ -1,10 +1,11 @@
 package com.vm.springlab.controller;
 
 import com.vm.springlab.config.ApplicationProperties;
+import com.vm.springlab.dto.EmployeeDeptDTO;
 import com.vm.springlab.entity.Employee;
 import com.vm.springlab.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,33 +22,54 @@ public class EmployeeController {
     // @Value("${custom.key}") String customKey)
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService,
+                              ApplicationProperties appProps) {
+        System.out.println(appProps.getEmployeeMsg());
         this.employeeService = employeeService;
     }
 
     @GetMapping(path = "/api/v1/employees", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public List<Employee> getEmployees() {
-        return employeeService.getEmployees();
+        List<Employee> lst = employeeService.getEmployees();
+        return lst;
+    }
+
+    @GetMapping(path = "/api/v1/departments/{deptUuid}/employees", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public List<EmployeeDeptDTO> getEmployeesByDepartment(@PathVariable String deptUuid) {
+        return employeeService.getEmployeesByDepartment(deptUuid);
     }
 
     @GetMapping(path = "/api/v1/employees/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public Employee getEmployee(@PathVariable String uuid) {
         return employeeService.getEmployee(uuid);
     }
 
     @PutMapping(path = "/api/v1/employees/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public Employee editEmployee(@PathVariable String uuid, @RequestBody Employee employee) {
         return employeeService.editEmployee(uuid, employee);
     }
 
     @PostMapping(path = "/api/v1/employees", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public Employee createEmployee(@RequestBody Employee employee) {
         return employeeService.createEmployee(employee);
     }
 
     @DeleteMapping(path = "/api/v1/employees/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Employee deleteEmployee(@PathVariable String uuid) {
-        return employeeService.deleteEmployee(uuid);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteEmployee(@PathVariable String uuid) {
+        employeeService.deleteEmployee(uuid);
+    }
+
+
+    @PutMapping(path = "/api/v1/employees/{uuid}/verify", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public Boolean verifyEmployee(@PathVariable String uuid) {
+        return employeeService.verifiedEmployee(uuid);
     }
 
     // TODO: Write a Service for Verifying the employee

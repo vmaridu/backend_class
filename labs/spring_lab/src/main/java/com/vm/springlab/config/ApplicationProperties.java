@@ -1,5 +1,6 @@
 package com.vm.springlab.config;
 
+
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class ApplicationProperties {
 
-    @Value("${custom.key}")
-    private String customKey;
+    // Getting property from Application.properties
+    @Value("${employee.msg}")
+    String employeeMsg;
+
 }

@@ -11,5 +11,4 @@ public class SpringLabApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringLabApplication.class, args);
     }
-
 }
