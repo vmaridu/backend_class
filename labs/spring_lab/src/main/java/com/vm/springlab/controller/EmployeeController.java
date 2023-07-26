@@ -22,9 +22,7 @@ public class EmployeeController {
     // @Value("${custom.key}") String customKey)
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService,
-                              ApplicationProperties appProps) {
-        System.out.println(appProps.getEmployeeMsg());
+    public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 

@@ -1,0 +1,16 @@
+### Agenda
+ - Junit, Mockito, Spring Testing 
+ - RestAssured
+ - WireMock
+ - Spring MVC
+ - Dispatcher Servlet
+ - Other Spring Tech 
+ - Perfornace Tuning 
+ - JMeter 
+ - API Automation Testing
+ - Auto Config 
+ - Spring Data JPA
+ - Logging 
+ - OAS and Swagger
+ - Custom Queries 
+ - Project Management and Agile 
