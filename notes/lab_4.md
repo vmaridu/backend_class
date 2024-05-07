@@ -1,10 +1,5 @@
 ### Agenda
  - CI/CD Basics  
- - Scheduler 
- - Actuator  
- - Rest Template Client
-
-
 
 ### CI/CD
 ~~~
@@ -32,9 +27,5 @@ dev, qa, cat, staging, prod
  - deploy to qa env 
 ~~~
 
-
 ### Read 
  - CI/CD https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment
- - Schduling https://www.baeldung.com/spring-scheduled-tasks
- - CRON https://productresources.collibra.com/docs/collibra/latest/Content/Cron/co_spring-cron.htm
- - RestTemplate https://reflectoring.io/spring-resttemplate/
